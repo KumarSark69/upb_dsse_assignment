@@ -1,0 +1,8 @@
+comparison,chi2,p_value,dof,significant_p05
+LDA × BERTopic,2551.2353,0.0,96,True
+LDA × DD1,222.2016,0.0,3,True
+LDA × DD2,263.0349,0.0,3,True
+LDA × DD3,211.1668,0.0,3,True
+BERTopic × DD1,369.241,0.0,32,True
+BERTopic × DD2,308.6181,0.0,32,True
+BERTopic × DD3,475.6509,0.0,32,True

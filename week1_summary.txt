@@ -1,0 +1,73 @@
+
+=======================================================
+  WEEK 1 RESULTS SUMMARY
+=======================================================
+
+DATASET
+-------
+Total issues:          50
+Projects:              Yarn=20, Mapreduce=10, Lucene=10, Tika=5, JClouds=5
+
+Design Decision Labels:
+  DD1 = True:          27 / 50 (54.0%)
+  DD2 = True:          29 / 50 (58.0%)
+  DD3 = True:          24 / 50 (48.0%)
+
+Bot Comments Filtered: Yes (35 bot authors excluded)
+
+PREPROCESSING PIPELINE
+-----------------------
+Steps applied:
+  1. Concatenate summary + description
+  2. Lowercase, remove URLs and code snippets
+  3. Remove punctuation and numbers
+  4. Tokenize (NLTK word_tokenize)
+  5. POS tag + lemmatize (WordNet lemmatizer)
+  6. Remove stop words (0 custom + NLTK English)
+  7. Replace tokens with ontology classes (COMPONENT, CONNECTOR, DATA, SOLUTION, QUALITY)
+
+VOCABULARY
+----------
+Raw vocabulary size:       132
+Filtered vocabulary size:  124 tokens
+  (min_freq >= 2, max_doc_freq <= 90%)
+
+Top 10 most frequent tokens:
+    token  total_freq  doc_freq  doc_freq_pct
+COMPONENT         104        47          0.94
+     DATA          31        22          0.44
+heartbeat          25         7          0.14
+ SOLUTION          24        17          0.34
+   memory          23        13          0.26
+CONNECTOR          22        21          0.42
+      api          18         9          0.18
+condition          17        13          0.26
+    token          17         7          0.14
+  support          16        12          0.24
+
+Ontology classes found:
+    token  total_freq  doc_freq
+COMPONENT         104        47
+     DATA          31        22
+ SOLUTION          24        17
+CONNECTOR          22        21
+  QUALITY          11        11
+
+DOCUMENT-TERM MATRIX
+---------------------
+Shape:    50 issues × 124 terms
+Non-zero: 730 entries
+Sparsity: 88.23%
+→ Ready as input for LDA topic modeling (Week 2)
+
+OUTPUT FILES
+------------
+  data/issues_raw.json         — raw issue data (from Jira)
+  data/issues_processed.json   — issues with token lists
+  data/vocabulary.csv          — all tokens with frequencies
+  data/dtm.npz                 — sparse Document-Term Matrix
+  data/dtm_feature_names.json  — vocabulary index for DTM columns
+  plots/vocab_top30_freq.png         — top 30 tokens bar chart
+  plots/vocab_distribution.png       — doc frequency distribution
+  plots/vocab_ontology_classes.png   — ontology class frequencies
+=======================================================
